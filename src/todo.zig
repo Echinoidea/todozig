@@ -79,7 +79,10 @@ pub const TodoList = struct {
 
     pub fn decode(self: *Self) !void {
         // Allocator, open file
-        const file = std.fs.cwd().openFile("data.json", .{}) catch {
+        const home: ?[:0]const u8 = std.posix.getenvZ("HOME");
+        const datapath = try std.fs.path.join(self.allocator, &[_][]const u8{ home.?, ".cache", "todozig", "data.json" });
+
+        const file = std.fs.openFileAbsolute(datapath, .{}) catch {
             return;
         };
         defer file.close();
