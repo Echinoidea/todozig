@@ -90,8 +90,13 @@ pub const App = struct {
         const cmdlist_space: usize = 1;
         const cmdline_space: usize = 1;
         const nonwhitespace: usize = title_space + cmdlist_space + cmdline_space + self.todo_list.items.items.len;
-        for (0..size.height - nonwhitespace) |_| {
-            try writer.writeAll("\n");
+
+        // std.debug.print("{}", .{size.height});
+        // std.debug.print("{}", .{nonwhitespace});
+        if (nonwhitespace < size.height) {
+            for (0..(size.height - nonwhitespace)) |_| {
+                try writer.writeAll("\n");
+            }
         }
         try writer.writeAll("[c] create | [d] delete | [r] rename | [t] toggle : ");
     }
