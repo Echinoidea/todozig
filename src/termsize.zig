@@ -1,3 +1,5 @@
+// Created by softprops at https://github.com/softprops/zig-termsize
+
 const std = @import("std");
 const builtin = @import("builtin");
 const io = std.io;

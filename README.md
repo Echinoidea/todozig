@@ -11,3 +11,5 @@ Clone repository and `zig build`
 `todozig`
 C-c to exit. Automatically writes changes with each input.
 
+termsize.zig provided by 
+https://github.com/softprops/zig-termsize
